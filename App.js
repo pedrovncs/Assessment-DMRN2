@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,9 +8,9 @@ import Cadastro from './screens/Cadastro';
 import Eventos from './screens/Eventos';
 import Detalhes from './screens/Detalhes';
 import Voos from './screens/Voos';
-import Home from './screens/Home';
+import Info from './screens/Info';
 import Fotos from './screens/Fotos';
-
+import Galeria from './screens/Galeria';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -36,39 +35,32 @@ function Tab({ route }) {
   );
 }
 
+function FotosTabNavigator() {
+  return (
+    <BottomTab.Navigator>
+      <BottomTab.Screen name="Fotos" component={Fotos} />
+      <BottomTab.Screen name="Galeria" component={Galeria} />
+    </BottomTab.Navigator>
+  );
+}
 
 function Drawer() {
   return (
     <DrawerNav.Navigator>
-      <DrawerNav.Screen
-        name="Home"
-        component={Home} />
-      <DrawerNav.Screen
-        name="Stack"
-        component={MainStack}
-        options={{ title: 'Eventos' }} />
-      <DrawerNav.Screen
-        name="Fotos"
-        component={Fotos}
-        options={{ title: 'Fotos' }} />
+      <DrawerNav.Screen name="Info" component={Info} />
+      <DrawerNav.Screen name="MainStack" component={MainStack} options={{ title: 'Eventos DMRN' }} />
+      <DrawerNav.Screen name="FotosTab" component={FotosTabNavigator} options={{ title: 'Fotos' }} />
     </DrawerNav.Navigator>
   );
 }
 
+
 function MainStack() {
   return (
-    <Stack.Navigator >
-      <Stack.Screen
-        name='Eventos'
-        component={Eventos}
-        options={{ headerShown: false }} />
-      <Stack.Screen
-        name='Tab'
-        component={Tab}
-        options={{ title: 'Eventos' }} />
-        <Stack.Screen
-        name="Cadastro"
-        component={Cadastro} />
+    <Stack.Navigator>
+      <Stack.Screen name='Eventos' component={Eventos} options={{ headerShown: false }} />
+      <Stack.Screen name='Tab' component={Tab} options={{ title: 'Eventos' }} />
+      <Stack.Screen name="Cadastro" component={Cadastro} />
     </Stack.Navigator>
   );
 }

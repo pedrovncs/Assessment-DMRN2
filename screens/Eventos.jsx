@@ -49,9 +49,10 @@ export default function EventosScreen({ navigation }) {
         </View>
       ) : (
         <FlatList
+          contentContainerStyle={styles.eventosContainer}
           keyExtractor={(item) => item.id}
           data={inputSearch.length > 0 ? eventosFiltrados : eventos}
-          renderItem={({ item, index }) => {
+          renderItem={({ item }) => {
             return (
               <TouchableOpacity
                 onPress={() =>
@@ -59,10 +60,7 @@ export default function EventosScreen({ navigation }) {
                 }
               >
                 <View
-                  style={[
-                    styles.cardEvento,
-                    index === eventos.length - 1 && styles.ultimoCard,
-                  ]}
+                  style={styles.cardEvento}
                   key={item.id}
                 >
                   <Image
@@ -71,9 +69,8 @@ export default function EventosScreen({ navigation }) {
                       uri: item.imagem,
                     }}
                   />
-                  <View style={styles.container}>
+                  <View style={styles.infoContainer}>
                     <Text>{item.nome}</Text>
-                    <Text>{item.data}</Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -81,7 +78,6 @@ export default function EventosScreen({ navigation }) {
           }}
         />
       )}
-      {/* Botão de cadastro fixo */}
       <TouchableOpacity
         style={styles.btnCadastro}
         onPress={() => navigation.navigate('Cadastro')}
@@ -93,34 +89,31 @@ export default function EventosScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
   cardEvento: {
-    width: 300,
+    width: '100%', 
     backgroundColor: '#fff',
     borderColor: '#000',
     borderRadius: 10,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-    marginBottom: 20,
-  },
-  ultimoCard: {
-    marginBottom: 0, 
+    margin: 10,
   },
   eventosContainer: {
-    gap: 20,
-    paddingBottom: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'center', 
+    paddingVertical: 20, 
   },
   imagemEvento: {
     width: 300,
     height: 200,
   },
-  container: {
-    display: 'flex',
-    gap: 20,
+  infoContainer: {
     padding: 10,
+    alignItems: 'center', 
   },
   input: {
     flex: 1, 
@@ -131,10 +124,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5, 
   },
-  
   flexRow: {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center', 
   },
   carregando: {
     justifyContent: 'center',

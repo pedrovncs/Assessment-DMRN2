@@ -4,7 +4,6 @@ import React from 'react'
 export default function DetalhesEventoScreen({ route }) {
 
   const { evento } = route.params;
-  console.log(evento);
 
   return (
     <View style={styles.cardDetalhes}>
@@ -52,3 +51,4 @@ const styles = StyleSheet.create({
     color: 'green',
   }
 })
+

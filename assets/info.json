@@ -1,0 +1,11 @@
+{
+    "appInfo": {
+      "nome": "Eventos DMRN",
+      "versao": "1.1.0",
+      "descricao": "Aplicativo para gerenciamento de eventos utilizando a plataforma Expo.",
+      "desenvolvedor": "Pedro Vinicius",
+      "email": "pedro.vpaiva@al.infnet.edu.br",
+      "github": "https://github.com/pedrovncs/Assessment-DMRN2"
+    }
+  }
+  
