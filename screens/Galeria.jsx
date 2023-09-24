@@ -14,6 +14,7 @@ export default function Galeria() {
 
     const fetchImages = async () => {
         const storageRef = ref(storage);
+        setLoading(true);
 
         try {
             const listResult = await listAll(storageRef);
